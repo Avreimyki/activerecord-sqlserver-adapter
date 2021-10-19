@@ -441,7 +441,7 @@ module ActiveRecord
 
         def handle_to_names_and_values_dblib(handle, options = {})
           query_options = {}.tap do |qo|
-            qo[:timezone] = ActiveRecord::Base.default_timezone || :utc
+            qo[:timezone] = ActiveRecord.default_timezone || :utc
             qo[:as] = (options[:ar_result] || options[:fetch] == :rows) ? :array : :hash
           end
           results = handle.each(query_options)
